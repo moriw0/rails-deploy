@@ -61,7 +61,7 @@ jobs:
           eval $(ssh-agent)
           ssh-add ~/.ssh/rails-deploy-webapp
           ssh -o StrictHostKeyChecking=no -A webapp@${{ secrets.TARGET_HOSTNAME }} "cd rails-deploy &&
-          git pull origin main &&
+          git pull origin main --ff &&
           ~/.rbenv/shims/bundle config --local deployment true &&
           ~/.rbenv/shims/bundle config --local without development:test &&
           ~/.rbenv/shims/bundle install &&
