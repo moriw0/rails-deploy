@@ -78,12 +78,12 @@ jobs:
         run: |
           cat << EOF > ~/.ssh/config
           Host rails-deploy-bastion
-            StrictHostKeyCheking no
+            StrictHostKeyChecking no
             HostName ${{ secrets.BASTION_HOSTNAME }}
           Host rails-deploy-webapp
             ProxyJump webapp@rails-deploy-bastion
           EOF
-        
+
       - name: Capistrano Deploy
         run: |
           eval $(ssh-agent)
